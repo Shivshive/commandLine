@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="61805" started-at="2020-12-14T10:27:54 IST" finished-at="2020-12-14T10:28:56 IST">
+    <groups>
+    </groups>
+    <test name="CalculatorTest_Add" duration-ms="61805" started-at="2020-12-14T10:27:54 IST" finished-at="2020-12-14T10:28:56 IST">
+      <class name="test_winium.CalculatorTest">
+        <test-method status="PASS" signature="setup(java.lang.String, java.lang.String)[pri:0, instance:test_winium.CalculatorTest@d44fc21]" name="setup" is-config="true" duration-ms="59384" started-at="2020-12-14T10:27:54 IST" finished-at="2020-12-14T10:28:53 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[C:\\Windows\\System32\\calc.exe]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[C:\\Users\\Chandra-Kautilya\\Documents\\winium desktop driver\\Winium.Desktop.Driver.exe]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="AddTest()[pri:0, instance:test_winium.CalculatorTest@d44fc21]" name="AddTest" duration-ms="2288" started-at="2020-12-14T10:28:53 IST" finished-at="2020-12-14T10:28:56 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:test_winium.CalculatorTest@d44fc21]" name="tearDown" is-config="true" duration-ms="70" started-at="2020-12-14T10:28:56 IST" finished-at="2020-12-14T10:28:56 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- test_winium.CalculatorTest -->
+    </test> <!-- CalculatorTest_Add -->
+  </suite> <!-- Suite -->
+</testng-results>
