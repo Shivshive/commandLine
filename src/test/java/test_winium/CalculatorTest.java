@@ -53,6 +53,7 @@ public class CalculatorTest {
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			PumpStreamHandler psh = new PumpStreamHandler(baos);
+			executor.setStreamHandler(psh);
 			
 			executor.setWatchdog(watchDog);
 			int result = executor.execute(command);
@@ -155,7 +156,7 @@ public class CalculatorTest {
 		
 		Map<String, String> result = runCommand(isRunning);
 		
-		if(Integer.parseInt(result.get("status"))==0 && !(result.get("msg").contains("No tasks are running"))) {
+		if(Integer.parseInt(result.get("status"))==0 && !(result.get("message").contains("No tasks are running"))) {
 			
 			System.out.println(ApplicationName+" instance is already running.. hence attempting to close it.");
 			CommandLine killApplication = new CommandLine("TaskKill");
@@ -164,7 +165,7 @@ public class CalculatorTest {
 			killApplication.addArgument(ApplicationName);
 			
 			Map<String, String> result1 = runCommand(killApplication);
-			if(Integer.parseInt(result.get("status"))==0) {
+			if(Integer.parseInt(result1.get("status"))==0) {
 				System.out.println(ApplicationName+" instance has been closed successfully..");
 				flag = true;
 			}
