@@ -2,29 +2,23 @@ package test_winium;
 
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
-import java.io.BufferedOutputStream;
+import static org.testng.Assert.assertFalse;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;import java.io.OutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.ExecuteWatchdog;
-import org.apache.commons.exec.ProcessDestroyer;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.winium.DesktopOptions;
 import org.openqa.selenium.winium.WiniumDriver;
 import org.openqa.selenium.winium.WiniumDriverService;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
@@ -180,7 +174,7 @@ public class CalculatorTest {
 	
 	
 	@Parameters({"appPath","winiumdriverpath"})
-	@BeforeTest
+	@BeforeTest(groups = { "clc" , "vac" })
 	public void setup(String appPath, String winiumdriverpath) {
 
 		try {
@@ -209,7 +203,7 @@ public class CalculatorTest {
 			
 			app = new WiniumDriver(service,options);
 			
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -221,7 +215,7 @@ public class CalculatorTest {
 		}
 	}
 
-	@Test
+	@Test(groups = { "clc" })
 	public void AddTest() {
 				System.out.println("Executing Test Script...");
 		//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("7")));
@@ -232,8 +226,37 @@ public class CalculatorTest {
 				String result = app.findElement(By.id("150")).getAttribute("Name");
 				assertEquals(Integer.parseInt(result), 12);	// Results = (actual == [7+5]=12)
 	}
+	
+	
+	@Test(groups = { "vac" })
+	public void vipAccessTest() {
+/*	
+ * 	Tried for the clocking logic for vip access but element does not seems feasible...
+ *  Hence the below code is commented .. 
+ * */		
+		
+//		try {
+			
+//			String counter = app.findElement(By.id("1007")).getAttribute("Name");
+//			
+//			if(Integer.parseInt(counter)<10) {
+//				Thread.sleep(10000);
+//			}
+			String code = app.findElement(By.id("11007")).getAttribute("Name");
+			System.out.println("Code is "+code);
+			if(code.isEmpty()) {
+				System.out.println("Code is empty");
+				assertFalse(code.isEmpty());
+			}
+			
+//		} catch (InterruptedException e) {
+//			System.out.println("Error in test code");
+//			e.printStackTrace();
+//		}
+		
+	}
 
-	@AfterTest
+	@AfterTest(groups = { "clc" , "vac" })
 	public void tearDown() throws Exception {
 
 				System.out.println("Tearing Down Test Case....");
